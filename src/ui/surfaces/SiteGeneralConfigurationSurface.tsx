@@ -57,9 +57,9 @@ export const SiteGeneralConfiguration = () => {
             label="Bluesky account DID"
             helpText="The unique identifier for your Bluesky accoun, starting with `did:`. It can be found in Bluesky under Settings > Change Handle > I have my own domain > No DNS Panel."
           />
-
-          {hasSubmitted && <p>Your settings have been saved. Plese note that you must make <a href={`/sites/${sdk.context.siteId}/deploys`}>a new production deploy</a> for the changes to take effect.</p>}
         </Form>
+
+        {hasSubmitted && <p>Your settings have been saved. You must trigger a new production deploy for the changes to take effect.</p>}
       </Card>
     </SiteGeneralConfigurationSurface>
   );
