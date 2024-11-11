@@ -8,15 +8,20 @@ import {
   SiteGeneralConfigurationSurface,
 } from "@netlify/sdk/ui/react/components";
 import { useNetlifySDK } from "@netlify/sdk/ui/react";
+import { useState } from "react";
 import { trpc } from "../trpc";
 import { siteSettingsSchema } from "../../schema/site-settings-schema";
 
+
 export const SiteGeneralConfiguration = () => {
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const sdk = useNetlifySDK();
   const trpcUtils = trpc.useUtils();
   const siteSettingsQuery = trpc.siteSettings.query.useQuery();
   const siteSettingsMutation = trpc.siteSettings.mutate.useMutation({
     onSuccess: async () => {
+      setHasSubmitted(true);
+
       await trpcUtils.siteSettings.query.invalidate();
     },
   });
@@ -43,7 +48,7 @@ export const SiteGeneralConfiguration = () => {
           <Checkbox
             name="enable"
             label="Enabled"
-            helpText="Enable the extension for this site"
+            helpText="Enable the extension for this site111"
           />
           
           <FormField
@@ -53,7 +58,7 @@ export const SiteGeneralConfiguration = () => {
             helpText="The unique identifier for your Bluesky accoun, starting with `did:`. It can be found in Bluesky under Settings > Change Handle > I have my own domain > No DNS Panel."
           />
 
-          <p>Please note that after updating the Bluesky DID, you must make a new production deploy for the changes to take effect.</p>
+          {hasSubmitted && <p>Your settings have been saved. Plese note that you must make <a href={`/sites/${sdk.context.siteId}/deploys`}>a new production deploy</a> for the changes to take effect.</p>}
         </Form>
       </Card>
     </SiteGeneralConfigurationSurface>
