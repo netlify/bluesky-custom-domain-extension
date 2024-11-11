@@ -28,7 +28,6 @@ export const SiteGeneralConfiguration = () => {
     <SiteGeneralConfigurationSurface>
       <Card>
         <CardTitle>{sdk.extension.name} configuration</CardTitle>
-        <p>Please note that after updating these settings, you must make a new production deploy for the changes to take effect.</p>
         <Form
           defaultValues={
             siteSettingsQuery.data ?? {
@@ -44,6 +43,8 @@ export const SiteGeneralConfiguration = () => {
             label="Bluesky account DID"
             helpText="The unique identifier for your Bluesky accoun, starting with `did:`. It can be found in Bluesky under Settings > Change Handle > I have my own domain > No DNS Panel."
           />
+
+          <p>Please note that after updating the Bluesky DID, you must make a new production deploy for the changes to take effect.</p>
         </Form>
       </Card>
     </SiteGeneralConfigurationSurface>
