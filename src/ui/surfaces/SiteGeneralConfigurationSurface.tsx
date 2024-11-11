@@ -40,7 +40,7 @@ export const SiteGeneralConfiguration = () => {
           onSubmit={siteSettingsMutation.mutateAsync}
         >
           <Checkbox
-            class="tw-mt-4"
+            className="tw-mt-4"
             name="enable"
             label="Enabled"
             helpText="Enable the extension for this site"
