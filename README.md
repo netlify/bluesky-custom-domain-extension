@@ -2,6 +2,13 @@
 
 An extension that lets you use your Netlify site domain as a custom handle in [Bluesky](https://bsky.app). It works with custom domains or the default `.netlify.app` subdomains.
 
+
+
+
+https://github.com/user-attachments/assets/34c87b2f-5058-46e2-8040-e6f7f4fc0a6d
+
+
+
 After installing the extension, you'll need the DID of your Bluesky account:
 
 1. Go to the [Bluesky settings page](https://bsky.app/settings)
