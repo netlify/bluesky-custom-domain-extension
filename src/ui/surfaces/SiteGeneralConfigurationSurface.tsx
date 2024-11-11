@@ -30,6 +30,7 @@ export const SiteGeneralConfiguration = () => {
       <Card>
         <CardTitle>{sdk.extension.name} configuration</CardTitle>
         <Form
+          className="tw-mt-4"
           defaultValues={
             siteSettingsQuery.data ?? {
               blueskyDID: "",
@@ -40,7 +41,6 @@ export const SiteGeneralConfiguration = () => {
           onSubmit={siteSettingsMutation.mutateAsync}
         >
           <Checkbox
-            className="tw-mt-4"
             name="enable"
             label="Enabled"
             helpText="Enable the extension for this site"
