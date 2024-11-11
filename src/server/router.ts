@@ -2,6 +2,8 @@ import { TRPCError } from "@trpc/server";
 import { procedure, router } from "./trpc.js";
 import { siteSettingsSchema } from "../schema/site-settings-schema.js";
 
+const DID_ENVIRONMENT_VARIABLE = "BLUESKY_DID";
+
 export const appRouter = router({
   siteSettings: {
     query: procedure.query(async ({ ctx: { teamId, siteId, client } }) => {
@@ -62,14 +64,22 @@ export const appRouter = router({
             });
           }
 
-          const { blueskyDID } = input;
+          const { blueskyDID, enable } = input;
 
-          await client.createOrUpdateVariable({
-            accountId: account.id,
-            siteId,
-            key: "BLUESKY_DID",
-            value: blueskyDID
-          });
+          if (enable) {
+            await client.createOrUpdateVariable({
+              accountId: account.id,
+              siteId,
+              key: DID_ENVIRONMENT_VARIABLE,
+              value: blueskyDID
+            });
+          } else {
+            await client.deleteEnvironmentVariable({
+              accountId: account.id,
+              siteId,
+              key: DID_ENVIRONMENT_VARIABLE
+            });
+          }
         } catch (e) {
           throw new TRPCError({
             code: "INTERNAL_SERVER_ERROR",

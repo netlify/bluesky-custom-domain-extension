@@ -2,6 +2,7 @@ import {
   Card,
   CardLoader,
   CardTitle,
+  Checkbox,
   Form,
   FormField,
   SiteGeneralConfigurationSurface,
@@ -32,11 +33,18 @@ export const SiteGeneralConfiguration = () => {
           defaultValues={
             siteSettingsQuery.data ?? {
               blueskyDID: "",
+              enable: false
             }
           }
           schema={siteSettingsSchema}
           onSubmit={siteSettingsMutation.mutateAsync}
         >
+          <Checkbox
+            name="enable"
+            label="Enabled"
+            helpText="Enable the extension for this site"
+          />
+          
           <FormField
             name="blueskyDID"
             type="text"
