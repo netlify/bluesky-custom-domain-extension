@@ -28,6 +28,7 @@ export const SiteGeneralConfiguration = () => {
     <SiteGeneralConfigurationSurface>
       <Card>
         <CardTitle>{sdk.extension.name} configuration</CardTitle>
+        <p>Please note that after updating these settings, you must make a new production deploy for the changes to take effect.</p>
         <Form
           defaultValues={
             siteSettingsQuery.data ?? {
