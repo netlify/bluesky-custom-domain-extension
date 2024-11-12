@@ -48,7 +48,7 @@ export const SiteGeneralConfiguration = () => {
           <Checkbox
             name="enable"
             label="Enabled"
-            helpText="Enable the extension for this site111"
+            helpText="Enable the extension for this site"
           />
           
           <FormField
