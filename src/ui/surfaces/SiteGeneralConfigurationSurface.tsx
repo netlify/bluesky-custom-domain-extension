@@ -55,7 +55,7 @@ export const SiteGeneralConfiguration = () => {
             name="blueskyDID"
             type="text"
             label="Bluesky account DID"
-            helpText="The unique identifier for your Bluesky accoun, starting with `did:`. It can be found in Bluesky under Settings > Change Handle > I have my own domain > No DNS Panel."
+            helpText="The unique identifier for your Bluesky account, starting with `did:`. It can be found in Bluesky under Settings > Change Handle > I have my own domain > No DNS Panel."
           />
         </Form>
 
